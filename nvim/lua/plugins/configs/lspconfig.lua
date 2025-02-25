@@ -95,4 +95,40 @@ lspconfig.zls.setup {
   capabilities = M.capabilities,
 }
 
+-- Ruby LSP
+lspconfig.ruby_lsp.setup({
+	on_attach = M.on_attach,
+	capabilities = M.capabilities,
+	init_options = {
+		formatter = "rubocop",
+		linters = { "rubocop" },
+		enabledFeatures = {
+			codeActions = true,
+			codeLens = true,
+			completion = true,
+			definition = true,
+			diagnostics = true,
+			documentHighlights = true,
+			documentLink = true,
+			documentSymbols = true,
+			foldingRanges = true,
+			formatting = true,
+			hover = true,
+			inlayHint = true,
+			onTypeFormatting = true,
+			selectionRanges = true,
+			semanticHighlighting = true,
+			signatureHelp = true,
+			typeHierarchy = true,
+			workspaceSymbol = true
+		},
+		featuresConfiguration = {
+			inlayHint = {
+				implicitHashValue = true,
+				implicitRescue = true
+			}
+		},
+	},
+})
+
 return M

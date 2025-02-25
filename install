@@ -94,6 +94,14 @@ function setup_software() {
 
   sudo chsh -s /bin/zsh $(whoami)
   zsh zsh/install.zsh
+
+  # Install ruby-lsp
+  # Only run this inside a dotcom codespace
+  if [ -d "/workspaces/github" ]; then
+    export RAILS_ROOT="/workspaces/github"
+    export PATH=$RAILS_ROOT/vendor/ruby/"$(/workspaces/github/config/ruby-version)"/bin:$PATH
+    gem install ruby-lsp
+  fi
 }
 
 # Most of this setup is for GitHub Codespaces
